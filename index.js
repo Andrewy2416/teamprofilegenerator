@@ -57,7 +57,7 @@ const menu = () => {
             type: 'list',
             name: 'member',
             message: 'Who would you like to add to the team?',
-            choices: ['Engineer', 'Intern']
+            choices: ['Engineer', 'Intern', 'No More Team Members']
         })
         .then(data => {
             const { member } = data;
@@ -68,6 +68,8 @@ const menu = () => {
                     break;
                 case 'Intern':
                     getIntern();
+                    break;
+                case 'No More Team Members':
                     break;
 
             }
@@ -148,6 +150,23 @@ const getIntern = () => {
             teamData.push(intern)
             menu()
         })
+
+        const generateTeam = (content) => {
+            console.log('generate')
+            return new Promise((resolve, reject) => {
+                fs.writeFile('./dist/index.html', content, err => {
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+                    resolve({
+                        ok: true,
+                        message: 'file created'
+                    })
+                })
+            })
+        }
+        
 }
 
 
