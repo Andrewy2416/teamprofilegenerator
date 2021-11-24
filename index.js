@@ -4,7 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const fs = require('fs')
-const htmlTemplate_src = require('./src/html-template');
+const htmlTemplate_src = require('./src/html-template.js');
 let teamData = [];
 
 const getInput = () => {
@@ -21,6 +21,7 @@ const getManager = () => {
             type: 'text',
             name: 'name',
             message: `Enter the manager's name:`,
+            //validate data
             validate: function (input) {
                 return input ? true : false;
             }
@@ -38,6 +39,7 @@ const getManager = () => {
             name: 'email',
             message: `Enter the manager's email address:`,
             validate: function (input) {
+                let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
                 return valid ? true : false
         },
         
@@ -84,6 +86,7 @@ const menu = () => {
                     getIntern();
                     break;
                 case 'No More Team Members':
+                    generateTeam(teamData);
                     break;
 
             }
@@ -96,6 +99,7 @@ const getEngineer = () => {
             type: 'text',
             name: 'name',
             message: `Enter the engineer's name:`,
+            //validate data
             validate: function (input) {
                 return input ? true : false;
             }
@@ -113,6 +117,7 @@ const getEngineer = () => {
             name: 'email',
             message: `Enter the engineer's email address:`,
             validate: function (input) {
+                let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
                 return valid ? true : false
             }
         },
@@ -143,6 +148,7 @@ const getIntern = () => {
             type: 'text',
             name: 'name',
             message: `Enter the intern's name:`,
+            //validate data
             validate: function (input) {
                 return input ? true : false;
             }
@@ -160,6 +166,7 @@ const getIntern = () => {
             name: 'email',
             message: `Enter the intern's email address:`,
             validate: function (input) {
+                let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
                 return valid ? true : false
             }
         },
@@ -181,12 +188,13 @@ const getIntern = () => {
             console.log(teamData)
             menu()
         })
+    }
 
-        const generateTeam = array => {
-            console.log('generate')
-            console.log(array)
-            htmlTemplate_src(array)
-            const dataIndex = htmlTemplate_src(array);
+const generateTeam = array => {
+        console.log('generate')
+        console.log(array)
+        htmlTemplate_src(array)
+        const dataIndex = htmlTemplate_src(array);
             fs.writeFileSync('./dist/index.html', dataIndex, 'utf-8', err => {
                 if (err) {
                     console.log(err);
@@ -196,7 +204,7 @@ const getIntern = () => {
             })
         
 }
-}
+
 
 
 
