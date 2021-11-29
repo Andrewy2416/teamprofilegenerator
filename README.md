@@ -12,14 +12,14 @@ the inquirer installation will prompt questions to create a team. Once the quest
 Steps to use this application
 
 1. git clone the teamprofilegenerator repository.
-2. npm install inquirer which will show the prompts to fill out the dynamically created README.md
+2. npm install inquirer which will show the prompts to fill out the dynamically created HTML file
 3. In the command terminal, run "node index.js".
 4. Answer the prompts as they appear. 
-5. Your brand new index.html file will be dynamically created afterwards in the dist file.
+5. Your brand new index.html file will be dynamically created afterwards in the dist file with all of the members of your team.
 
 ## Usage
 
-(https://www.youtube.com/watch?v=KjAxgSlaDx4)
+(https://www.youtube.com/watch?v=B0GIEf_kNkA)
 
 Link to video showing usage of Application
 
