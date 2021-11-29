@@ -9,15 +9,15 @@ function generateCards(team) {
     const teamArray = team[i];
     switch(teamArray.getRole()) {
       case 'Manager':
-        const manager = new Manager(teamArray.id, teamArray.name, teamArray.email, teamArray.officeNumber);
+        const manager = new Manager(teamArray.name, teamArray.id, teamArray.email, teamArray.officeNumber);
         cards.push(generateManagerCard(manager));
         break;
       case 'Engineer':
-        const engineer = new Engineer(teamArray.id, teamArray.name, teamArray.email, teamArray.github);
+        const engineer = new Engineer(teamArray.name,teamArray.id, teamArray.email, teamArray.github);
         cards.push(generateEngineerCard(engineer));
         break;
       case 'Intern':
-        const intern = new Intern(teamArray.id, teamArray.name, teamArray.email, teamArray.school);
+        const intern = new Intern(teamArray.name, teamArray.id, teamArray.email);
         cards.push(generateInternCard(intern));
         break;
     }
@@ -29,7 +29,7 @@ let generateManagerCard = (manager) => {
   return `
   <div class="card m-1 shadow" style="width: 18rem">
     <div class='card-header'>
-      <h3 class="card-title">${manager.name}</h3>
+      <h3 class="card-title">${manager.name} - Manager</h3>
     </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -46,7 +46,7 @@ let generateEngineerCard = (engineer) => {
   return `
   <div class="card m-1 shadow" style="width: 18rem">
     <div class='card-header'>
-      <h3 class="card-title">${engineer.name}</h3>
+      <h3 class="card-title">${engineer.name} - Engineer</h3>
     </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -63,13 +63,13 @@ let generateInternCard = (intern) => {
   return `
   <div class="card m-1 shadow" style="width: 18rem">
     <div class='card-header'>
-      <h3 class="card-title">${intern.name}</h3>
+      <h3 class="card-title">${intern.name} - Intern</h3>
     </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${intern.id}</li>
         <li class="list-group-item">Email: ${intern.email}</li>
-        <li class="list-group-item">School: ${intern.school}</li>
+        <li class="list-group-item">Email: ${intern.school}</li>
       </ul>
     </div>
   </div>
@@ -90,7 +90,7 @@ return `
   <title>My Team</title>
 </head>
 <body>
-<div class="jumbotron jumbotron-fluid bg-warning">
+<div class="jumbotron jumbotron-fluid bg-primary">
   <div class="container">
     <h1 class="display-4 text-center">My Team</h1>
   </div>
